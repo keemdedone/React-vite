@@ -1,0 +1,13 @@
+.navbar {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: calc(100% - var(--sidebar-width));
+    height: var(--navbar-height);
+    background-color: var(--primary-color);
+    padding: .5rem 1rem;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+}

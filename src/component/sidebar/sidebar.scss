@@ -1,0 +1,18 @@
+.sidebar {
+    z-index: 2;
+    width: 300px;
+    min-height: 100vh;
+    height: auto;
+    background-color: var(--primary-color);
+    backdrop-filter: blur(8px);
+    border-right: 1px solid var(--border-color);
+}
+
+.side-head {
+    height: var(--navbar-height);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.side-body {
+    padding: 15px;
+}
