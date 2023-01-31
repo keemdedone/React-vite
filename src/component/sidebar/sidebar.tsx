@@ -1,24 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { menuItems } from "../../model/model";
 import "./sidebar.scss";
 
 const Sidebar = () => {
+  const currentRoute = useLocation().pathname;
+
   return (
     <div className="sidebar">
       <div className="side-head"></div>
       <div className="side-body">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+        <ul className="nav-link">
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <Link
+                to={item.path}
+                className={currentRoute === item.path ? "link active" : "link"}
+              >
+                {item.icon}
+                {item.name}
+              </Link>
             </li>
-            <li>
-              <Link to="/calendar">Calendar</Link>
-            </li>
-            <li>
-              <Link to="/weather">Weather</Link>
-            </li>
-          </ul>
-        </nav>
+          ))}
+        </ul>
       </div>
     </div>
   );

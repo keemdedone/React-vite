@@ -14,5 +14,50 @@
 }
 
 .side-body {
-    padding: 15px;
+    padding: 10px 15px;
+
+    .nav-link {
+        list-style: none;
+
+        .link {
+            margin: 8px 0;
+            padding: 8px 10px 8px 15px;
+            border-radius: 7px;
+            color: var(--text-normal-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition:
+                color .25s ease,
+                background-color .25s ease;
+
+            &:hover {
+                color: var(--text-light-color);
+                background-color: rgba(161, 170, 255, 0.062);
+            }
+
+            &.active {
+                color: var(--text-active-color);
+                background-color: var(--hover-background);
+            }
+
+            .icon {
+                color: var(--icon-color);
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: calc(-1 * var(--sidebar-width));
+        transition: left .25s ease-in;
+
+        &.open {
+            left: 0;
+        }
+    }
 }

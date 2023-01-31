@@ -11,3 +11,9 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
 }
+
+@media screen and (max-width:1024px) {
+    .navbar {
+        width: 100%;
+    }
+}
