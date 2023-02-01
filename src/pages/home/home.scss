@@ -1,3 +1,10 @@
 .home {
-    color: white;
+
+    .topic {
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: var(--text-normal-color);
+    }
 }

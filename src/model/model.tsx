@@ -19,3 +19,57 @@ export const menuItems = [
     icon: <AcUnitIcon className="icon" />,
   },
 ];
+
+export const footerImages = [
+  {
+    src: "vite.png",
+    name: "Vite",
+  },
+  {
+    src: "react.svg",
+    name: "React",
+  },
+  {
+    src: "ts.png",
+    name: "TS",
+  },
+  {
+    src: "scss.png",
+    name: "SCSS",
+  },
+  {
+    src: "mui.svg",
+    name: "MUI",
+  },
+];
+
+export const dayName = [
+  {
+    full: "Monday",
+    short: "Mon.",
+  },
+  {
+    full: "Thuesday",
+    short: "Tues.",
+  },
+  {
+    full: "Wednesday",
+    short: "Wed.",
+  },
+  {
+    full: "Thursday",
+    short: "Thurs.",
+  },
+  {
+    full: "Friday",
+    short: "Fri.",
+  },
+  {
+    full: "Saturday",
+    short: "Sat.",
+  },
+  {
+    full: "Sunday",
+    short: "Sun.",
+  },
+];

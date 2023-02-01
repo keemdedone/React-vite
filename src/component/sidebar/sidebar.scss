@@ -1,4 +1,7 @@
 .sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
     z-index: 2;
     width: 300px;
     min-height: 100vh;
@@ -9,6 +12,12 @@
 }
 
 .side-head {
+    color: white;
+    padding: .5rem 1rem;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: var(--navbar-height);
     border-bottom: 1px solid var(--border-color);
 }

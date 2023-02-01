@@ -1,0 +1,35 @@
+.table {
+    $cell-width: 120px;
+    max-width: calc($cell-width * 7);
+    width: 100%;
+    margin: auto;
+    user-select: none;
+
+    .row {
+        display: grid;
+        grid-template-columns: repeat(7, $cell-width);
+
+        .col {
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            display: grid;
+            place-items: center;
+            width: 100%;
+            font-size: 20px;
+            height: 80px;
+            transition:
+                border .35s ease,
+                color .35s ease;
+
+            &.head {
+                font-size: 16px;
+                height: 40px;
+            }
+
+            &:hover:not(.head):not(.expand) {
+                color: var(--text-active-color);
+                border: 1px solid var(--text-active-color);
+            }
+        }
+    }
+}

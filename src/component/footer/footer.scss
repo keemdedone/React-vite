@@ -1,0 +1,25 @@
+.footer {
+    user-select: none;
+    flex-basis: calc(100% - var(--sidebar-width));
+    background-color: var(--primary-color);
+    height: 150px;
+    padding: 1rem 3rem;
+    border-top: 1px solid var(--border-color);
+    margin-left: auto; // make this elem go to right
+
+    .images {
+        height: 70px;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .footer {
+        flex-basis: 100%;
+    }
+}

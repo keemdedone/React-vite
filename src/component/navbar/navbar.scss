@@ -10,6 +10,38 @@
     padding: .5rem 1rem;
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+
+    .clock {
+        color: var(--text-normal-color);
+        transition: color .25s ease;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--text-active-color);
+        }
+
+        .icon {
+            display: grid;
+            place-items: center;
+            margin: auto 7px;
+        }
+
+        .time {
+            overflow-x: hidden;
+            font-size: 26px;
+            width: 0;
+            transition: width .5s ease;
+
+            &.show {
+                width: 120px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width:1024px) {
