@@ -25,11 +25,7 @@ function Navbar() {
     <div className="navbar">
       <div className="clock" onClick={displayTime}>
         <div className="icon">
-          {!showTime ? (
-            <ScheduleIcon fontSize="large" />
-          ) : (
-            <CancelIcon fontSize="large" />
-          )}
+          {!showTime ? <ScheduleIcon fontSize="large" /> : <CancelIcon />}
         </div>
         <div className={showTime ? "time show" : "time"}>
           {time.toLocaleTimeString()}
