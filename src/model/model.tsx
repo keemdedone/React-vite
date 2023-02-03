@@ -88,3 +88,8 @@ export const monthName = [
   "November",
   "December",
 ];
+
+export const keys = {
+  API_KEY: "d9e3f33539b4582e668b5097b2428c17",
+  BASE_URL: "https://api.openweathermap.org/data/3.0/",
+};

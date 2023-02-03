@@ -3,6 +3,9 @@ import { dayName, monthName } from "../../model/model";
 import IconButton from "@mui/material/IconButton";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import TodayIcon from "@mui/icons-material/Today";
+import Tooltip from "@mui/material/Tooltip";
+import zoom from "@mui/material/Zoom";
 
 import "./calendar.scss";
 
@@ -13,6 +16,12 @@ const Calendar = () => {
   const [selectDay, setSelectDay] = useState(new Date());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+
+  const todayDate = () => {
+    setSelectDay(new Date());
+    setCurrentMonth(new Date().getMonth());
+    setCurrentYear(new Date().getFullYear());
+  };
 
   const selectCheck = (index: number) => {
     let yes = false;
@@ -77,6 +86,26 @@ const Calendar = () => {
           {monthName[currentMonth]} {currentYear}
         </div>
         <div className="navigate">
+          <Tooltip
+            title="Today"
+            placement="top"
+            TransitionComponent={zoom}
+            arrow
+          >
+            <span>
+              <IconButton
+                className="button"
+                color="primary"
+                onClick={todayDate}
+                disabled={
+                  currentMonth === new Date().getMonth() &&
+                  currentYear === new Date().getFullYear()
+                }
+              >
+                <TodayIcon />
+              </IconButton>
+            </span>
+          </Tooltip>
           <IconButton color="primary" onClick={handlePrevClick}>
             <NavigateBeforeIcon />
           </IconButton>

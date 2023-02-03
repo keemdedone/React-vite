@@ -9,20 +9,22 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #555;
 }
 
 ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
     background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #777;
 }
 
 :root {
     --primary-color: #0a1929;
     --second-color: #001e3c;
+    --disabled-color: #777;
     --border-color: #c2e0ff14;
     --hover-background: #3399ff3d;
     --icon-color: #3399ff;
