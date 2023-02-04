@@ -66,15 +66,19 @@
                     border-radius 0s ease;
             }
 
-            &.head {
-                font-size: 16px;
-                height: 40px;
+            &:active {
+                background-color: rgba(161, 170, 255, 0.062);
             }
 
             &:hover:not(.head):not(.expand),
             &.selected {
                 color: var(--text-active-color);
                 border: 1px solid var(--text-active-color);
+            }
+
+            &.head {
+                font-size: 16px;
+                height: 40px;
             }
 
             &.selected {
