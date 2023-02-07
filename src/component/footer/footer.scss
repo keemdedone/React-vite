@@ -7,6 +7,11 @@
     border-top: 1px solid var(--border-color);
     margin-left: auto; // make this elem go to right
 
+    .topic {
+        text-align: left;
+        font-size: 30px;
+    }
+
     .images {
         height: 70px;
         width: 100%;

@@ -1,0 +1,12 @@
+.list {
+    margin: 1rem auto;
+
+    .link {
+        color: var(--text-normal-color);
+        transition: color .25s ease;
+
+        &:hover {
+            color: var(--text-light-color);
+        }
+    }
+}

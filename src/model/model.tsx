@@ -1,6 +1,7 @@
 import HomeIcon from "@mui/icons-material/HouseRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonthRounded";
 import AcUnitIcon from "@mui/icons-material/AcUnitRounded";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 
 export const menuItems = [
   {
@@ -17,6 +18,11 @@ export const menuItems = [
     path: "/weather",
     name: "Weather",
     icon: <AcUnitIcon className="icon" />,
+  },
+  {
+    path: "/game",
+    name: "Game",
+    icon: <SportsEsportsIcon className="icon" />,
   },
 ];
 
@@ -93,6 +99,43 @@ export const keys = {
   API_KEY: "d9e3f33539b4582e668b5097b2428c17",
   BASE_URL: "https://api.openweathermap.org/data/2.5/",
 };
+
+export const gameList = [
+  {
+    id: 1,
+    name: "Elden Ring",
+    poster: "",
+    api: {
+      credit: "eldenring.fanapis.com",
+      base: "https://eldenring.fanapis.com/api",
+    },
+  },
+];
+
+/*-- Elden Ring --*/
+export const eldenRing_menu = [
+  {
+    name: "Npc",
+    call: "npcs",
+    active: false,
+  },
+  {
+    name: "Boss",
+    call: "bosses",
+    active: false,
+  },
+  {
+    name: "Spirit",
+    call: "spirits",
+    active: false,
+  },
+  {
+    name: "Weapon",
+    call: "weapons",
+    active: false,
+  },
+];
+/*-- Elden Ring --*/
 
 export type WeatherAPI = {
   coord: {

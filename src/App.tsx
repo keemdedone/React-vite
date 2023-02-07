@@ -8,6 +8,8 @@ import Footer from "./component/footer/footer";
 import Home from "./pages/home/home";
 import Calendar from "./pages/calendar/calendar";
 import Weather from "./pages/weather/weather";
+import Game from "./pages/game/game";
+import GameView from "./pages/game/view/game-view";
 
 import "./App.scss";
 
@@ -23,6 +25,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/game/:id" element={<GameView />} />
           </Routes>
           <WrapList />
         </div>

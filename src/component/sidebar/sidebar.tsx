@@ -1,3 +1,6 @@
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
 import { Link, useLocation } from "react-router-dom";
 
 import { menuItems } from "../../model/model";

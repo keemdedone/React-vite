@@ -1,0 +1,97 @@
+.game-view {
+    position: relative;
+
+    .go-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .name {
+        text-align: center;
+        font-size: 50px;
+    }
+
+    .menu-select {
+        margin: 2rem 0;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+    }
+}
+
+
+.display-data {
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px 0;
+    opacity: 1;
+
+    &.emtry {
+        border: 1px solid transparent;
+        opacity: 0;
+    }
+
+    ul {
+        li {
+            list-style: none;
+        }
+    }
+
+    .load-more {
+        width: fit-content;
+        margin: 1rem auto;
+    }
+}
+
+.loading-data {
+    padding: 4rem 10px;
+    text-align: center;
+
+    .animation {
+        display: flex;
+        justify-content: center;
+        margin: 8px auto;
+
+        svg {
+            width: 50%;
+            max-width: 2.5rem;
+            animation: rotate 3s linear infinite;
+
+            circle {
+                fill: none;
+                stroke: var(--icon-color);
+                stroke-width: 8px;
+                stroke-dasharray: 300;
+                animation: outline 2s cubic-bezier(0.77, 0, 0.18, 1) infinite;
+            }
+        }
+    }
+
+
+
+    @keyframes outline {
+        0% {
+            stroke-dashoffset: 0;
+        }
+
+        50% {
+            stroke-dashoffset: 300;
+        }
+
+        100% {
+            stroke-dashoffset: 600;
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0turn);
+        }
+
+        to {
+            transform: rotate(-1turn);
+        }
+    }
+}
