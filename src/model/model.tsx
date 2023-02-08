@@ -134,6 +134,26 @@ export const eldenRing_menu = [
     call: "weapons",
     active: false,
   },
+  {
+    name: "Armor",
+    call: "armors",
+    active: false,
+  },
+  {
+    name: "Ashe of War",
+    call: "ashes",
+    active: false,
+  },
+  {
+    name: "Item",
+    call: "items",
+    active: false,
+  },
+  {
+    name: "Location",
+    call: "locations",
+    active: false,
+  },
 ];
 /*-- Elden Ring --*/
 
