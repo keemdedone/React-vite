@@ -140,7 +140,7 @@ export const eldenRing_menu = [
     active: false,
   },
   {
-    name: "Ashe of War",
+    name: "Ashe",
     call: "ashes",
     active: false,
   },
@@ -152,6 +152,16 @@ export const eldenRing_menu = [
   {
     name: "Location",
     call: "locations",
+    active: false,
+  },
+  {
+    name: "Incantation",
+    call: "incantations",
+    active: false,
+  },
+  {
+    name: "Sorcerie",
+    call: "sorceries",
     active: false,
   },
 ];

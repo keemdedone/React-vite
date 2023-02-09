@@ -1,12 +1,6 @@
 .game-view {
     position: relative;
 
-    .go-back {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     .name {
         text-align: center;
         font-size: 50px;
@@ -16,7 +10,6 @@
         margin: 1.5rem 0;
         display: flex;
         gap: 10px;
-        overflow-x: auto;
     }
 }
 

@@ -1,4 +1,5 @@
 .weather-container {
+    user-select: none;
     cursor: pointer;
     background-image: url('../../assets/weather/space.jpg');
     background-repeat: no-repeat;
