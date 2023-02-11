@@ -10,7 +10,7 @@ const game = () => {
   return (
     <div className="page-container">
       <div>
-        <h3 className="topic">Game List</h3>
+        <h1 className="topic">Game List</h1>
         <ul className="list">
           {gameList.map((game, index) => (
             <li key={index}>

@@ -10,6 +10,7 @@ import Calendar from "./pages/calendar/calendar";
 import Weather from "./pages/weather/weather";
 import Game from "./pages/game/game";
 import GameView from "./pages/game/view/game-view";
+import PageNotFound from "./pages/error/pageNotFound/pageNotFound";
 
 import "./App.scss";
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/game" element={<Game />} />
             <Route path="/game/:id" element={<GameView />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
           <WrapList />
         </div>
