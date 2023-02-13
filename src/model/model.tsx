@@ -2,6 +2,7 @@ import HomeIcon from "@mui/icons-material/HouseRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonthRounded";
 import AcUnitIcon from "@mui/icons-material/AcUnitRounded";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 
 export const menuItems = [
   {
@@ -23,6 +24,11 @@ export const menuItems = [
     path: "/game",
     name: "Game",
     icon: <SportsEsportsIcon className="icon" />,
+  },
+  {
+    path: "/user",
+    name: "User",
+    icon: <SupervisedUserCircleIcon className="icon" />,
   },
 ];
 
@@ -212,4 +218,8 @@ export type WeatherAPI = {
   id: number;
   name: string;
   cod: number;
+};
+
+export type FormData = {
+  name: string;
 };
