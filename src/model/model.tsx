@@ -222,4 +222,6 @@ export type WeatherAPI = {
 
 export type FormData = {
   name: string;
+  email: string;
+  photo: string | null;
 };
