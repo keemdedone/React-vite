@@ -10,6 +10,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import ToggleOffRoundedIcon from "@mui/icons-material/ToggleOffRounded";
 import ToggleOnOutlinedIcon from "@mui/icons-material/ToggleOnOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import CloseIcon from "@mui/icons-material/Close";
+
 import { FormData } from "../../model/model";
 import "./user.scss";
 
@@ -19,9 +22,9 @@ const user = () => {
   const [userID, setUserID] = useState<number>();
   const [user, setUser] = useState<any>([]);
   const [users, setUsers] = useState<any>([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [status, setStatus] = useState<boolean[]>([]);
-  const [dialogID, setDialogID] = useState(0);
+  const [dialogID, setDialogID] = useState<number>(0);
   const [createForm, setCreateForm] = useState<FormData>({
     name: "",
     email: "",
@@ -57,14 +60,6 @@ const user = () => {
     setOpen(false);
   };
 
-  const getUser = (id: number) => {
-    fetch(`${backend_url}/users/users_readSingle.php?uID=${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data);
-      });
-  };
-
   const getUsers = () => {
     fetch(`${backend_url}/users/users_read.php`)
       .then((response) => response.json())
@@ -74,16 +69,17 @@ const user = () => {
       });
   };
 
+  const getUser = (id: number) => {
+    fetch(`${backend_url}/users/users_readSingle.php?uID=${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+      });
+  };
+
   const formChange = (event: any) => {
     setCreateForm({
       ...createForm,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const updateChange = (event: any) => {
-    setUpdateForm({
-      ...updateForm,
       [event.target.name]: event.target.value,
     });
   };
@@ -110,6 +106,13 @@ const user = () => {
       .catch((error) => {
         console.error("Error submitting form, " + error);
       });
+  };
+
+  const updateChange = (event: any) => {
+    setUpdateForm({
+      ...updateForm,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const updateSubmit = (event: any) => {
@@ -179,7 +182,7 @@ const user = () => {
             </div>
             <div className="btn-submit">
               <Button type="submit" variant="contained">
-                create
+                <SaveIcon />
               </Button>
               <Button
                 type="button"
@@ -187,7 +190,7 @@ const user = () => {
                 variant="contained"
                 onClick={onCloseDialog}
               >
-                close
+                <CloseIcon />
               </Button>
             </div>
           </form>
@@ -265,7 +268,7 @@ const user = () => {
               </div>
               <div className="btn-submit">
                 <Button type="submit" variant="contained">
-                  save
+                  <SaveIcon />
                 </Button>
                 <Button
                   type="button"
@@ -273,7 +276,7 @@ const user = () => {
                   variant="contained"
                   onClick={onCloseDialog}
                 >
-                  close
+                  <CloseIcon />
                 </Button>
               </div>
             </form>
