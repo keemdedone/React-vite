@@ -5,6 +5,7 @@
     .menu-add-btn {
         padding: 3px 8px;
         min-width: 32px;
+        background: linear-gradient(225deg, #395168, #4ca1af);
     }
 }
 
@@ -36,6 +37,14 @@
                 .active-btn {
                     padding: 3px 6px;
                     min-width: 32px;
+                    border: 1px solid transparent;
+                    background: linear-gradient(225deg, #11998e, #38ef7d);
+
+                    &.toggle {
+                        background: transparent;
+                        border: 1px solid var(--border-color);
+                        color: var(--text-normal-color);
+                    }
                 }
             }
 
@@ -44,6 +53,26 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
+
+                .menu-btn {
+                    padding: 3px 6px;
+                    min-width: 32px;
+                    border: 1px solid transparent;
+
+                    &:nth-child(1) {
+                        background: linear-gradient(225deg, #7474bf, #348ac7);
+                    }
+
+                    &:nth-child(2) {
+                        background: linear-gradient(225deg, #fc4a1a, #f7b733);
+                    }
+
+                    &:disabled {
+                        background: transparent;
+                        border: 1px solid var(--border-color);
+                        color: var(--text-normal-color);
+                    }
+                }
             }
         }
     }
@@ -55,6 +84,7 @@
 
     h1 {
         font-size: 48px;
+        color: var(--text-light-color);
     }
 
     .box {
@@ -62,6 +92,10 @@
         padding: 1rem;
         display: flex;
         justify-content: center;
+
+        input {
+            color: var(--text-light-color);
+        }
 
         .upload {
             cursor: pointer;
@@ -90,11 +124,13 @@
         margin: 1rem auto;
         text-align: left;
         line-height: 2rem;
-        max-width: 500px;
+        max-width: 300px;
+        font-size: 18px;
 
         p {
             display: grid;
-            grid-template-columns: 80px 1fr;
+            grid-template-columns: 50px 20px 1fr;
+            color: var(--text-light-color);
 
             b {
                 text-align: center;

@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import EditAttributesIcon from "@mui/icons-material/EditAttributes";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import SearchIcon from "@mui/icons-material/Search";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
+
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import SearchIcon from "@mui/icons-material/Search";
+import EditIcon from "@mui/icons-material/Edit";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import ToggleOffRoundedIcon from "@mui/icons-material/ToggleOffRounded";
+import ToggleOnOutlinedIcon from "@mui/icons-material/ToggleOnOutlined";
 import { FormData } from "../../model/model";
 import "./user.scss";
 
 const user = () => {
   let dialogContent;
   const backend_url = "http://localhost/my-vite-react-server";
-  const [user, setUser] = useState<any>([]);
   const [userID, setUserID] = useState<number>();
+  const [user, setUser] = useState<any>([]);
   const [users, setUsers] = useState<any>([]);
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<boolean[]>([]);
   const [dialogID, setDialogID] = useState(0);
   const [createForm, setCreateForm] = useState<FormData>({
     name: "",
@@ -52,11 +53,6 @@ const user = () => {
     }
   };
 
-  const onOpenDeleteDialog = (action: number, id: number) => {
-    setDialogID(action);
-    setOpen(true);
-  };
-
   const onCloseDialog = () => {
     setOpen(false);
   };
@@ -72,7 +68,10 @@ const user = () => {
   const getUsers = () => {
     fetch(`${backend_url}/users/users_read.php`)
       .then((response) => response.json())
-      .then((data) => setUsers(data));
+      .then((data) => {
+        setUsers(data);
+        setStatus(data.map((d: any) => d.uActive === "1"));
+      });
   };
 
   const formChange = (event: any) => {
@@ -150,6 +149,7 @@ const user = () => {
                 name="name"
                 variant="filled"
                 autoComplete="off"
+                focused
                 required
               />
             </div>
@@ -160,6 +160,7 @@ const user = () => {
                 name="email"
                 variant="filled"
                 autoComplete="off"
+                focused
                 required
               />
             </div>
@@ -177,13 +178,13 @@ const user = () => {
               <input type="file" name="photo" id="photo" hidden />
             </div>
             <div className="btn-submit">
-              <Button type="submit" variant="outlined">
+              <Button type="submit" variant="contained">
                 create
               </Button>
               <Button
                 type="button"
                 color="error"
-                variant="outlined"
+                variant="contained"
                 onClick={onCloseDialog}
               >
                 close
@@ -197,19 +198,22 @@ const user = () => {
     case 2:
       dialogContent = (
         <div className="dialog-component">
-          <h1>Read</h1>
+          <h1>User Information</h1>
           {user.map((data: any, index: number) => (
             <div key={index} className="user-info">
               <p>
                 <b>Name</b>
+                <b>:</b>
                 <span>{data.uName}</span>
               </p>
               <p>
                 <b>Email</b>
+                <b>:</b>
                 <span>{data.uEmail}</span>
               </p>
               <p>
                 <b>Status</b>
+                <b>:</b>
                 <span>{data.uActive === "0" ? "Active" : "Disabled"}</span>
               </p>
             </div>
@@ -231,6 +235,7 @@ const user = () => {
                   name="name"
                   variant="filled"
                   autoComplete="off"
+                  focused
                   required
                 />
               </div>
@@ -241,6 +246,7 @@ const user = () => {
                   name="email"
                   variant="filled"
                   autoComplete="off"
+                  focused
                   required
                 />
               </div>
@@ -258,13 +264,13 @@ const user = () => {
                 <input type="file" name="photo" id="photo" hidden />
               </div>
               <div className="btn-submit">
-                <Button type="submit" variant="outlined">
+                <Button type="submit" variant="contained">
                   save
                 </Button>
                 <Button
                   type="button"
                   color="error"
-                  variant="outlined"
+                  variant="contained"
                   onClick={onCloseDialog}
                 >
                   close
@@ -278,17 +284,34 @@ const user = () => {
       );
       break;
 
-    case 4:
-      dialogContent = (
-        <div className="dialog-component">
-          <h1>Remove</h1>
-        </div>
-      );
-      break;
-
     default:
       break;
   }
+
+  const changeActive = (index: number, userID: number) => {
+    fetch(`${backend_url}/users/users_updateStatus.php?uID=${userID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ active: status[index] ? 0 : 1 }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data === "complete") {
+          setTimeout(() => {
+            setStatus((prevStatus) => {
+              const newStatus = [...prevStatus];
+              newStatus[index] = !newStatus[index];
+              return newStatus;
+            });
+          }, 500);
+        }
+      })
+      .catch((error) => {
+        console.error("Error updated form, " + error);
+      });
+  };
 
   useEffect(() => {
     getUsers();
@@ -299,8 +322,7 @@ const user = () => {
       <div className="menu-add">
         <Button
           className="menu-add-btn"
-          variant="outlined"
-          color="secondary"
+          variant="contained"
           onClick={() => onOpenCreateDialog(1)}
         >
           <PersonAddIcon />
@@ -326,34 +348,39 @@ const user = () => {
                 <td>
                   <div className="active">
                     <Button
-                      className="active-btn"
-                      variant="outlined"
+                      className={
+                        !status[index] ? "active-btn" : "active-btn toggle"
+                      }
                       color="primary"
+                      variant="contained"
+                      onClick={() => changeActive(index, user.uID)}
                     >
-                      <EditAttributesIcon />
+                      {status[index] ? (
+                        <ToggleOnOutlinedIcon />
+                      ) : (
+                        <ToggleOffRoundedIcon />
+                      )}
                     </Button>
                   </div>
                 </td>
                 <td>
                   <div className="menu">
-                    <IconButton
-                      color="success"
+                    <Button
+                      variant="contained"
+                      className="menu-btn"
+                      disabled={status[index]}
                       onClick={() => onOpenReadDialog(2, user.uID)}
                     >
                       <SearchIcon />
-                    </IconButton>
-                    <IconButton
-                      color="warning"
+                    </Button>
+                    <Button
+                      variant="contained"
+                      className="menu-btn"
+                      disabled={status[index]}
                       onClick={() => onOpenUpdateDialog(3, user.uID)}
                     >
                       <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      color="error"
-                      onClick={() => onOpenDeleteDialog(4, user.uID)}
-                    >
-                      <DeleteOutlineIcon />
-                    </IconButton>
+                    </Button>
                   </div>
                 </td>
               </tr>
@@ -373,6 +400,11 @@ const user = () => {
         onClose={onCloseDialog}
         fullWidth={true}
         maxWidth="sm"
+        PaperProps={{
+          style: {
+            background: "#2c3e50",
+          },
+        }}
       >
         {dialogContent}
       </Dialog>
