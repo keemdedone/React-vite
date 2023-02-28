@@ -14,6 +14,7 @@ const Calendar = () => {
   const [daysBefore, setDaysBefore] = useState<boolean[]>([]);
   const [daysAfter, setDaysAfter] = useState<boolean[]>([]);
   const [selectDay, setSelectDay] = useState(new Date());
+  const [selectShow, setSelectShow] = useState<string>("");
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 
@@ -36,6 +37,8 @@ const Calendar = () => {
   };
 
   const handleDateSelect = (day: number, month: number, year: number) => {
+    const date = new Date(year, month, day + 1).toString().slice(3, 16);
+    setSelectShow(date);
     setSelectDay(new Date(year, month, day + 1));
   };
 
@@ -149,6 +152,13 @@ const Calendar = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="date-show">
+        <h3>
+          Your select date :
+          {selectShow ? selectShow : new Date().toString().slice(3, 16)}
+        </h3>
       </div>
     </div>
   );

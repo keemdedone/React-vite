@@ -101,10 +101,10 @@ const user = () => {
       .then((data) => {
         onCloseDialog();
         getUsers();
-        console.log("Form submitted successfully, " + data);
+        console.log("Form submitted : " + data);
       })
       .catch((error) => {
-        console.error("Error submitting form, " + error);
+        console.error("Error submitting form : " + error);
       });
   };
 
