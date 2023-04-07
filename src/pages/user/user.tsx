@@ -18,7 +18,7 @@ import "./user.scss";
 
 const user = () => {
   let dialogContent;
-  const backend_url = "http://localhost/my-vite-react-server";
+  const backend_url = "http://localhost/my-react-vite-server";
   const [userID, setUserID] = useState<number>();
   const [user, setUser] = useState<any>([]);
   const [users, setUsers] = useState<any>([]);
@@ -73,6 +73,7 @@ const user = () => {
     fetch(`${backend_url}/users/users_readSingle.php?uID=${id}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data[0].uName);
         setUser(data);
       });
   };
@@ -181,9 +182,6 @@ const user = () => {
               <input type="file" name="photo" id="photo" hidden />
             </div>
             <div className="btn-submit">
-              <Button type="submit" variant="contained">
-                <SaveIcon />
-              </Button>
               <Button
                 type="button"
                 color="error"
@@ -191,6 +189,9 @@ const user = () => {
                 onClick={onCloseDialog}
               >
                 <CloseIcon />
+              </Button>
+              <Button type="submit" variant="contained">
+                <SaveIcon />
               </Button>
             </div>
           </form>
@@ -229,12 +230,12 @@ const user = () => {
       dialogContent = (
         <div className="dialog-component">
           <h1>Update</h1>
-          {user ? (
+          {user && user.length > 0 ? (
             <form onSubmit={updateSubmit} onChange={updateChange}>
               <div className="box">
                 <TextField
                   id="filled-basic"
-                  label="User name"
+                  label={user[0].uName}
                   name="name"
                   variant="filled"
                   autoComplete="off"
@@ -245,7 +246,7 @@ const user = () => {
               <div className="box">
                 <TextField
                   id="filled-basic"
-                  label="Email"
+                  label={user[0].uEmail}
                   name="email"
                   variant="filled"
                   autoComplete="off"
@@ -267,9 +268,6 @@ const user = () => {
                 <input type="file" name="photo" id="photo" hidden />
               </div>
               <div className="btn-submit">
-                <Button type="submit" variant="contained">
-                  <SaveIcon />
-                </Button>
                 <Button
                   type="button"
                   color="error"
@@ -277,6 +275,9 @@ const user = () => {
                   onClick={onCloseDialog}
                 >
                   <CloseIcon />
+                </Button>
+                <Button type="submit" variant="contained">
+                  <SaveIcon />
                 </Button>
               </div>
             </form>
